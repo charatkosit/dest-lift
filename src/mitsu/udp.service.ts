@@ -23,7 +23,7 @@ export class UdpService {
     });
 
     // เริ่มต้นการฟังที่พอร์ตที่กำหนด
-    this.udpServer.bind(52000);
+    this.udpServer.bind(52000,'0.0.0.0');
   }
 
   sendMessage(hexString: string, port: number, address: string): void {
