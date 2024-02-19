@@ -3,15 +3,22 @@ import { OfficersService } from './officers.service';
 import { CreateOfficerDto } from './dto/create-officer.dto';
 import { UpdateOfficerDto } from './dto/update-officer.dto';
 
-@Controller('officers')
+@Controller({
+  version: '1',
+  path: 'officers'
+})
 export class OfficersController {
   constructor(private readonly officersService: OfficersService) {}
 
+  //http://localhost:3000/api/v1/officers
+  //method: POST
+  //body: { "firstName": "John", "lastName": "Doe", "phone": "1234567890", "idCard": "123 456 789 012  ", "token": "123456", "destFloor": 1 }
   @Post()
   create(@Body() createOfficerDto: CreateOfficerDto) {
     return this.officersService.create(createOfficerDto);
   }
 
+  // http://localhost:3000/api/v1/officers/count
   @Get('count')
   count(){
     return this.officersService.count();
